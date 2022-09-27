@@ -20,16 +20,39 @@ namespace pryTissera_SP1
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            StreamWriter swCultivos = new StreamWriter("./Cultivos.txt", true);
+            bool bandera = false;
+            if (File.Exists("./Cultivos.txt") == true)
+            {
 
-            swCultivos.WriteLine(txtID.Text + " " + cboCultivos.Text);
-            swCultivos.Close();
+                StreamReader srCultivos = new StreamReader("./Cultivos.txt");
+                while (!srCultivos.EndOfStream)
+                { 
+                    string[] vecCultivos = srCultivos.ReadLine().Split(',');
+                    if (vecCultivos[0] == txtID.Text)
+                    {
+                        bandera = true;
+                    }  
+                }
+                srCultivos.Close();
+            }
 
-            MessageBox.Show("Datos grabados con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (bandera != true)
+            {
+                StreamWriter swCultivos = new StreamWriter("./Cultivos.txt", true);
 
-            txtID.Text = "";
-            cboCultivos.Text = "";
-            txtID.Focus();
+                swCultivos.WriteLine(txtID.Text + "," + cboCultivos.Text);
+                swCultivos.Close();
+
+                MessageBox.Show("Datos grabados con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtID.Text = "";
+                cboCultivos.Text = "";
+                txtID.Focus();
+            }
+            else
+            {
+                MessageBox.Show("El ID ya está cargado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

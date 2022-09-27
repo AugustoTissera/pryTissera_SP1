@@ -24,7 +24,8 @@ namespace pryTissera_SP1
 
             while (!srLocalidades.EndOfStream)
             {
-                cboLocalidades.Items.Add(srLocalidades.ReadLine());
+                string[] vecLocalidades = srLocalidades.ReadLine().Split(',');
+                cboLocalidades.Items.Add(vecLocalidades[1]);
             }
             srLocalidades.Close();
 
@@ -33,7 +34,8 @@ namespace pryTissera_SP1
 
             while (!srCultivos.EndOfStream)
             {
-                cboCultivos.Items.Add(srCultivos.ReadLine());
+                string[] vecCultivos = srCultivos.ReadLine().Split(',');
+                cboCultivos.Items.Add(vecCultivos[1]);
             }
             srCultivos.Close();
         }
@@ -42,13 +44,14 @@ namespace pryTissera_SP1
         {
             StreamWriter swProduccion = new StreamWriter("./Produccion.txt", true);
 
-            swProduccion.WriteLine(cboLocalidades.Text + " " + cboCultivos.Text);
+            swProduccion.WriteLine(cboLocalidades.Text + "," + cboCultivos.Text + "," + txtToneladas.Text);
             swProduccion.Close();
 
             MessageBox.Show("Datos grabados con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             cboLocalidades.Text = "";
             cboCultivos.Text = "";
+            txtToneladas.Text = "";
         }
     }
 }

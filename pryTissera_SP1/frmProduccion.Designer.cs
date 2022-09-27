@@ -34,6 +34,8 @@ namespace pryTissera_SP1
             this.cboLocalidades = new System.Windows.Forms.ComboBox();
             this.cboCultivos = new System.Windows.Forms.ComboBox();
             this.btnGrabar = new System.Windows.Forms.Button();
+            this.lblToneladas = new System.Windows.Forms.Label();
+            this.txtToneladas = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // lblLocalidad
@@ -72,7 +74,7 @@ namespace pryTissera_SP1
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(74, 95);
+            this.btnGrabar.Location = new System.Drawing.Point(74, 136);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(75, 23);
             this.btnGrabar.TabIndex = 5;
@@ -80,11 +82,31 @@ namespace pryTissera_SP1
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
+            // lblToneladas
+            // 
+            this.lblToneladas.AutoSize = true;
+            this.lblToneladas.Location = new System.Drawing.Point(12, 99);
+            this.lblToneladas.Name = "lblToneladas";
+            this.lblToneladas.Size = new System.Drawing.Size(60, 13);
+            this.lblToneladas.TabIndex = 6;
+            this.lblToneladas.Text = "Toneladas:";
+            // 
+            // txtToneladas
+            // 
+            this.txtToneladas.Location = new System.Drawing.Point(74, 96);
+            this.txtToneladas.Mask = "99999";
+            this.txtToneladas.Name = "txtToneladas";
+            this.txtToneladas.Size = new System.Drawing.Size(121, 20);
+            this.txtToneladas.TabIndex = 7;
+            this.txtToneladas.ValidatingType = typeof(int);
+            // 
             // frmProduccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(225, 171);
+            this.Controls.Add(this.txtToneladas);
+            this.Controls.Add(this.lblToneladas);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.cboCultivos);
             this.Controls.Add(this.cboLocalidades);
@@ -105,5 +127,7 @@ namespace pryTissera_SP1
         private System.Windows.Forms.ComboBox cboLocalidades;
         private System.Windows.Forms.ComboBox cboCultivos;
         private System.Windows.Forms.Button btnGrabar;
+        private System.Windows.Forms.Label lblToneladas;
+        private System.Windows.Forms.MaskedTextBox txtToneladas;
     }
 }
